@@ -1,0 +1,9 @@
+---
+
+  - hosts: all
+    become: yes
+
+
+    tasks:
+      - name: test the server
+        shell: echo "Hello World"
