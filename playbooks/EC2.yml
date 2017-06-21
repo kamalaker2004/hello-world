@@ -1,0 +1,20 @@
+---
+ - hosts: localhost
+
+   tasks:
+#    - name: list the instances created using
+#      shell: aws ec2 describe-instances --filters "Name=image-id,Values="
+
+    - name: Create RHEL EC2 instances
+      ec2:
+        key_name: KamalKeyPair
+        group_id: sg-10f5e16b
+        instance_type: t2.micro
+        image: ami-6f68cf0f
+        count: 1
+        vpc_subnet_id: subnet-255e0a6c
+        region: us-west-2
+        instance_tags:
+            Name: RHEL_test
+        wait: true
+      register: ec2
